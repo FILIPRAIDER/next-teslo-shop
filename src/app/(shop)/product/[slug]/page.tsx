@@ -31,7 +31,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: product?.title ?? "Producto no encontrado",
       description: product?.description ?? "Producto no encontrado",
-      images: [`/products/${product!.images[1]}`],
+      images: [
+        {
+          url: product?.images?.[1]?.startsWith("http")
+            ? product.images[1]
+            : `https://tienda-fb.vercel.app/products/${product?.images[1]}`, // ✅ URL absoluta
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
   };
 }
