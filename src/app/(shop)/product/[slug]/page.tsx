@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         {
           url: product?.images?.[1]?.startsWith("http")
             ? product.images[1]
-            : `https://tienda-fb.vercel.app/products/${product?.images[1]}`, // ✅ URL absoluta
+            : `/products/${product?.images[1]}`,
           width: 1200,
           height: 630,
         },
